@@ -1,0 +1,1 @@
+.\bin\link /SUBSYSTEM:CONSOLE /OUT:%1.exe %1.obj

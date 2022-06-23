@@ -1,0 +1,72 @@
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:07:51
+example3.asm						     Page 1 - 1
+
+
+				.386
+				.MODEL flat, STDCALL
+
+ = 0000000A			stala equ 10
+
+ 00000000			.data
+ 00000000 10				zmienna1 db 10h
+					ALIGN 4
+ 00000004 0010				zmienna2 dw 10h
+ 00000006 00000010			zmienna3 dd 10h
+ 00000000			.code
+
+ 00000000			main proc
+ 00000000  B8 0000000A			mov eax, stala
+ 00000005  83 C0 05			add eax, 5
+ 00000008  66| 83 C0 05			add ax, 5
+ 0000000C  66| 03 05			add ax, zmienna2
+	   00000004 R
+ 00000013  66| 03 05			add ax, zmienna2
+	   00000004 R
+ 0000001A  03 05 00000006 R		add eax, zmienna3
+ 00000020  04 05			add al,5
+ 00000022  80 C4 05			add ah,5
+ 00000025			main endp
+
+				END
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:07:51
+example3.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000000A DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000025 DWord	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000025 Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+stala  . . . . . . . . . . . . .	Number	 0000000Ah   
+zmienna1 . . . . . . . . . . . .	Byte	 00000000 _DATA	
+zmienna2 . . . . . . . . . . . .	Word	 00000004 _DATA	
+zmienna3 . . . . . . . . . . . .	DWord	 00000006 _DATA	
+
+	   0 Warnings
+	   0 Errors

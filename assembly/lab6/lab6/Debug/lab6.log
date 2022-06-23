@@ -1,0 +1,4 @@
+﻿  Assembling lab6.asm...
+lab6.asm(120): error A2070: invalid instruction operands
+lab6.asm(123): error A2070: invalid instruction operands
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml.exe /c /nologo /Zi /Fo"Debug\lab6.obj" /W3 /errorReport:prompt  /Talab6.asm" exited with code 1.

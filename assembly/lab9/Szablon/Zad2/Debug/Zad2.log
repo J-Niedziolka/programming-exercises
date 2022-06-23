@@ -1,0 +1,4 @@
+﻿  Assembling ..\..\..\..\..\..\..\Kamil@Apps.ii.uph\przedmioty\PN\lab2016-2017\lab09\Szablon\Zad2\Source.asm...
+4) : error A2071: initializer magnitude too large for specified size
+MASM : fatal error A1000: cannot open file : grafika.inc
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\BuildCustomizations\masm.targets(50,5): error MSB3721: The command "ml.exe /c /nologo /Zi /Fo"Debug\Source.obj" /W3 /errorReport:prompt  /Ta"..\..\..\..\..\..\..\Kamil@Apps.ii.uph\przedmioty\PN\lab2016-2017\lab09\Szablon\Zad2\Source.asm"" exited with code 1.

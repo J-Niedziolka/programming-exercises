@@ -1,0 +1,3 @@
+﻿  Assembling lab7zad2.asm...
+lab7zad2.obj : warning LNK4258: directive '/ENTRY:main@0' not compatible with switch '/ENTRY:main'; ignored
+  lab7zad2.vcxproj -> D:\ksiazki\UPH\Programowanie Niskopoziomowe\lab7\lab7zad2\Debug\lab7zad2.exe

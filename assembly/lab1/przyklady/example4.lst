@@ -1,0 +1,117 @@
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:18:39
+example4.asm						     Page 1 - 1
+
+
+				.386
+				.MODEL flat, STDCALL
+				includelib .\lib\user32.lib
+				includelib .\lib\kernel32.lib
+
+ = 0000000A			stala equ 10
+ =-0000000B			STD_OUTPUT_HANDLE                    equ -11
+
+				GetStdHandle PROTO :DWORD
+				WriteConsoleA PROTO :DWORD,:DWORD,:DWORD,:DWORD,:DWORD
+				ExitProcess PROTO :DWORD
+
+ 00000000			.data
+ 00000000 10				zmienna1 db 10h
+					ALIGN 4
+ 00000004 0010				zmienna2 dw 10h
+ 00000006 00000010			zmienna3 dd 10h
+					
+ 0000000A 0D 0A 48 65 6C		zaprA	DB	0Dh,0Ah,"Hello this is dog ",0
+	   6C 6F 20 74 68
+	   69 73 20 69 73
+	   20 64 6F 67 20
+	   00
+					ALIGN	4
+ 00000020 00000016			rozmA	DD	$ - zaprA	;liczba znaków w tablicy
+ 00000024 00000001			zmA	DD	1	; argument A
+
+ 00000028 00000000			rout	DD	0 ;faktyczna liczba wyprowadzonych znaków
+ 0000002C 00000000			hout 	DD 	0
+					
+ 00000000			.code
+
+ 00000000			start:
+ 00000000  B8 0000000A			mov eax, stala
+ 00000005  83 C0 05			add eax, 5
+ 00000008  66| 83 C0 05			add ax, 5
+ 0000000C  66| 83 C0 AA			add ax, 0FFAAh ;dlaczego wartoœæ natychmiastowa konwertowana jest do 1bajta
+ 00000010  66| 03 05			add ax, zmienna2
+	   00000004 R
+ 00000017  66| 03 05			add ax, zmienna2
+	   00000004 R
+ 0000001E  03 05 00000006 R		add eax, zmienna3
+ 00000024  04 05			add al,5
+ 00000026  80 C4 05			add ah,5
+					
+ 00000029  6A F5			push	STD_OUTPUT_HANDLE
+ 0000002B  E8 00000000 E		call	GetStdHandle	; wywo³anie funkcji GetStdHandle
+ 00000030  A3 0000002C R		mov	hout, EAX	; deskryptor wyjœciowego bufora konsoli
+					
+ 00000035  6A 00			push	0		; rezerwa, musi byæ zero
+ 00000037  68 00000028 R		push	OFFSET rout 	; wskaŸnik na faktyczn¹ liczba wyprowadzonych znaków 
+ 0000003C  FF 35 00000020 R		push	rozmA		; liczba znaków
+ 00000042  68 0000000A R		push	OFFSET zaprA 	; wska¿nik na tekst
+ 00000047  FF 35 0000002C R	 	push	hout		; deskryptor buforu konsoli
+ 0000004D  E8 00000000 E		call	WriteConsoleA	; wywo³anie funkcji WriteConsoleA   
+					
+ 00000052  6A 00			push 0 
+ 00000054  E8 00000000 E		call ExitProcess
+ 00000059			end start
+
+				END
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:18:39
+example4.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000030 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000059 DWord	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+$$$00001 . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000059 Private STDCALL
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetStdHandle . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteConsoleA  . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+STD_OUTPUT_HANDLE  . . . . . . .	Number	 -0000000Bh   
+hout . . . . . . . . . . . . . .	DWord	 0000002C _DATA	
+rout . . . . . . . . . . . . . .	DWord	 00000028 _DATA	
+rozmA  . . . . . . . . . . . . .	DWord	 00000020 _DATA	
+stala  . . . . . . . . . . . . .	Number	 0000000Ah   
+start  . . . . . . . . . . . . .	L Near	 00000000 _TEXT	Public STDCALL
+zaprA  . . . . . . . . . . . . .	Byte	 0000000A _DATA	
+zmA  . . . . . . . . . . . . . .	DWord	 00000024 _DATA	
+zmienna1 . . . . . . . . . . . .	Byte	 00000000 _DATA	
+zmienna2 . . . . . . . . . . . .	Word	 00000004 _DATA	
+zmienna3 . . . . . . . . . . . .	DWord	 00000006 _DATA	
+
+	   0 Warnings
+	   0 Errors

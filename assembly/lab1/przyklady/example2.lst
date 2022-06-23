@@ -1,0 +1,91 @@
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:06:27
+example2.asm						     Page 1 - 1
+
+
+				.386
+				.MODEL flat, STDCALL
+
+ = 0000000A			stala equ 10
+
+ 00000000			.data
+ 00000000 10				zmienna1 BYTE 10h
+
+ 00000001 0010				zmienna2 WORD 10h
+					
+ 00000003 0000000A			zmienna4 DWORD 10,10,10,10
+	   0000000A
+	   0000000A
+	   0000000A
+ 00000013  0000000A [			zmienna5 DWORD 10 dup(0)
+	    00000000
+	   ]
+ 0000003B  0000000A [			zmienna6 BYTE 10 dup(0)
+	    00
+	   ]
+ 00000045 41 42 43 44 45		text	 BYTE "ABCDE"
+ 0000004A 00000010			zmienna3 DWORD  10h
+ 0000004E				text2 	 BYTE 614, 624, 634, 644, 654
+example2.asm(16) : error A2071: initializer magnitude too large for specified size
+					
+ 00000000			.code
+
+ 00000000			main proc
+ 00000000  B0 0A			mov al, stala
+ 00000002  66| B8 000A			mov ax, stala
+ 00000006  B8 0000000A			mov eax, stala
+					
+ 0000000B  A0 00000000 R		mov al, zmienna1
+ 00000010  66| A1			mov ax, zmienna2
+	   00000001 R
+ 00000016  A1 0000004A R		mov eax, zmienna3
+
+ 0000001B			main endp
+
+				END
+Microsoft (R) Macro Assembler Version 6.14.8444		    10/08/21 13:06:27
+example2.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000053 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001B DWord	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001B Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+stala  . . . . . . . . . . . . .	Number	 0000000Ah   
+text2  . . . . . . . . . . . . .	Byte	 0000004E _DATA	
+text . . . . . . . . . . . . . .	Byte	 00000045 _DATA	
+zmienna1 . . . . . . . . . . . .	Byte	 00000000 _DATA	
+zmienna2 . . . . . . . . . . . .	Word	 00000001 _DATA	
+zmienna3 . . . . . . . . . . . .	DWord	 0000004A _DATA	
+zmienna4 . . . . . . . . . . . .	DWord	 00000003 _DATA	
+zmienna5 . . . . . . . . . . . .	DWord	 00000013 _DATA	
+zmienna6 . . . . . . . . . . . .	Byte	 0000003B _DATA	
+
+	   0 Warnings
+	   1 Errors

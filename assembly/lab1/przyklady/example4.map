@@ -1,0 +1,32 @@
+ example4
+
+ Timestamp is 6160293e (Fri Oct 08 13:19:26 2021)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00001094H .text                   CODE
+ 0002:00000000 00000164H .rdata                  DATA
+ 0002:00000164 00000000H .edata                  DATA
+ 0003:00000000 00000139H .data                   DATA
+ 0004:00000000 00000014H .idata$2                DATA
+ 0004:00000014 00000014H .idata$3                DATA
+ 0004:00000028 00000038H .idata$4                DATA
+ 0004:00000060 00000038H .idata$5                DATA
+ 0004:00000098 00000142H .idata$6                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000010       _start                     00401010 f   example4.obj
+ 0001:00000080       _GetStdHandle@4            00401080 f   kernel32:kernel32.dll
+ 0001:00000086       _WriteConsoleA@20          00401086 f   kernel32:kernel32.dll
+ 0001:0000008c       _ExitProcess@4             0040108c f   kernel32:kernel32.dll
+ 0004:00000000       __IMPORT_DESCRIPTOR_kernel32 00405000     kernel32:kernel32.dll
+ 0004:00000014       __NULL_IMPORT_DESCRIPTOR   00405014     kernel32:kernel32.dll
+ 0004:00000060       __imp__WriteConsoleA@20    00405060     kernel32:kernel32.dll
+ 0004:00000064       __imp__ExitProcess@4       00405064     kernel32:kernel32.dll
+ 0004:00000068       __imp__GetStdHandle@4      00405068     kernel32:kernel32.dll
+ 0004:0000006c       \177kernel32_NULL_THUNK_DATA 0040506c     kernel32:kernel32.dll
+
+ entry point at        0001:00000010
+

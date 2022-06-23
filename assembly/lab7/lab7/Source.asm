@@ -1,0 +1,21 @@
+.586P
+.MODEL FLAT, STDCALL
+
+;PUBLIC PROC1
+;EXTERNPROC1@0:NEAR
+
+ExitProcess PROTO :DWORD
+SCANINT PROTO
+
+_DATA SEGMENT
+_DATA ENDS
+
+_TEXT SEGMENT
+main proc
+	call SCANINT
+	push 0
+	call ExitProcess
+main endp
+
+_TEXT ENDS
+END
